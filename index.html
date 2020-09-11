@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts Jp -->
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/nikukyu.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+    <title>Google Fonts List(JP)</title>
+</head>
+<body>
+    <div id="myapp">
+      <div id="contents">
+
+        <!-- v-for でフォントの種類だけ一覧を表示 -->
+        <div v-for="font in fonts" v-bind:key="font.id">
+          <p class="headding">
+            <!-- チェックを外すと v-if で非表示に -->
+            <input type="checkbox" v-on:click="font.flag=!font.flag" checked>{{ font.family.fontFamily }}
+          </p>
+          <P v-bind:style="font.family">
+            <span v-bind:style="fontStyle" v-if="font.flag">{{ message }}</span>
+          </P>
+        </div>
+
+      </div>
+      <div id="sidemenu">
+        <ul>
+          <li>text<br><textarea type="text" v-model="message"></textarea></li>
+          <li>font-size: {{ sizeRange }}<br><input type="range" min="0" max="100" v-model="sizeRange"></li>
+          <li>font-weight: {{ weightRange }}<br><input type="range" min="100" max="900" v-model="weightRange"></li>
+          <li>font-color: {{ colorVal }}<br><input type="color" v-model="colorVal"></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Vue.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+</html>
